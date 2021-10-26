@@ -1,0 +1,91 @@
+<html>
+  <body>
+    <h2>Fridge Items</h2>
+    <table>
+      <thead>
+        <td>
+          <b>Item</b>
+        </td>
+        <td>
+          <b>Count</b>
+        </td>
+        <td>
+          <b>Remove</b>
+        </td>
+      </thead>
+      <tbody >
+        <tr >
+          <td >Cucumber</td>
+          <td>3</td>
+          <td class=close ><button onClick= "remove()">X</button></td>
+        </tr >
+        <tr >
+          <td >Lettuce</td>
+          <td>5</td>
+          <td class=close ><button onClick= "remove()">X</button></td>
+        </tr>
+        <tr id="last">
+        </tr>
+      </tbody>
+    </table>
+    <br />
+    <input id= myInput type="text">
+    <button onClick= "add()">Add</button>
+    
+  </body>
+  <script>
+
+
+  
+  function remove(){
+   const close = document.getElementsByClassName("close");
+   let i;
+    for (i = 0; i < close.length; i++) {
+      close[i].onclick = function() {
+     const div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+}
+
+  
+
+function add(){
+  
+
+  
+  const inputValue = document.getElementById("myInput").value;
+  const input = []
+  if(!inputValue){
+    alert("Please type in to start")
+  }
+  for(let i =0; i<inputValue.length;i++){
+     input.push(inputValue[i])
+    }
+   
+    for(let i =0; i<input.length;i++){
+      if(input[i] == " "){
+          word =inputValue.slice(0,i)
+          number =inputValue.slice(i+1)
+      }
+    }
+  const htmlContent= `<tr>
+          <td >${word}</td>
+          <td>${number}</td>
+          <td class=close ><button onClick= "remove()">X</button></td>
+        </tr>`
+  
+  const l=document.getElementById("last")
+  l.innerHTML=htmlContent;
+  document.getElementById("myInput").value=""
+
+}
+  
+  </script>
+  <style>
+    td {
+      padding-right: 50px;
+    }
+
+  </style>
+</html>
